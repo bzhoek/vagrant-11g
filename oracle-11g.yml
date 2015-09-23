@@ -2,8 +2,7 @@
 - hosts: all
   sudo: true
   tasks:
-  - name: requisites
-    yum: name={{item}} state=present
+  - yum: name={{item}} state=present
     with_items:
       - compat-libstdc++-33.x86_64
       - elfutils-libelf-devel
@@ -11,3 +10,8 @@
       - libaio-devel
       - unixODBC
       - unixODBC-devel
+  - group: name={{item}} state=present
+    with_items:
+      - dba
+      - oinstall
+  - user: name=oracle group=oinstall groups=dba state=present
