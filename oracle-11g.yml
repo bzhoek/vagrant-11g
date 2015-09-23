@@ -2,7 +2,7 @@
 - hosts: all
   sudo: true
   tasks:
-  - yum: name={{item}} state=present
+  - yum: name={{item}}
     with_items:
       - compat-libstdc++-33.x86_64
       - elfutils-libelf-devel
@@ -10,12 +10,12 @@
       - libaio-devel
       - unixODBC
       - unixODBC-devel
-  - group: name={{item}} state=present
+  - group: name={{item}}
     with_items:
       - dba
       - oinstall
-  - user: name=oracle group=oinstall groups=dba state=present
-  - sysctl: name="{{item.name}}" value="{{item.value}}" state=present ignoreerrors=yes
+  - user: name=oracle group=oinstall groups=dba
+  - sysctl: name="{{item.name}}" value="{{item.value}}" ignoreerrors=yes
     with_items:
     - {name: "fs.file-max", value: "6815744"}
     - {name: "fs.aio-max-nr", value: "1048576"}
