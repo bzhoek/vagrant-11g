@@ -20,6 +20,7 @@
       - dba
       - oinstall
   - user: name=oracle group=oinstall groups=dba
+  - file: path=/opt/oracle/product/11.2.0 state=directory owner=oracle group=oinstall
   - sysctl: name="{{item.name}}" value="{{item.value}}" ignoreerrors=yes
     with_items:
     - {name: "fs.file-max", value: "6815744"}
