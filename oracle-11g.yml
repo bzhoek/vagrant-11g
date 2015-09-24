@@ -4,6 +4,11 @@
   tasks:
   - yum: name={{item}}
     with_items:
+      - xauth
+      - xclock
+      - xhost
+  - yum: name={{item}}
+    with_items:
       - compat-libstdc++-33.x86_64
       - elfutils-libelf-devel
       - gcc-c++
