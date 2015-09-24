@@ -14,6 +14,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
+  config.vm.synced_folder "~/Downloads/database", "/database", :mount_options => ["dmode=777","fmode=777"]
+
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "oracle-11g.yml"
   end
