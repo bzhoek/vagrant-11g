@@ -1,4 +1,4 @@
-# Vagrant with Ansible Oracle 11gR2 silent install
+## Vagrant with Ansible Oracle 11gR2 silent install
 
 Download images from http://www.oracle.com/technetwork/database/enterprise-edition/downloads/112010-linx8664soft-100572.html
 
@@ -6,12 +6,12 @@ After installation, you can connect to https://localhost:1158/em with user `SYST
 
 SSH tunneling with `vagrant ssh -- -L 1158:localhost:1158`
 
-## X11
+### X11
 `vagrant ssh -- -Y` does not work when changing to `oracle` with `su`.
 
     $ ssh oracle@127.0.0.1 -i .vagrant/machines/default/virtualbox/private_key -p 2222 -X
 
-## References
+### References
 
 * http://www.server-world.info/en/note?os=CentOS_6&p=oracle11g&f=1
 * [CentOS 6.2](http://eduardo-lago.blogspot.nl/2012/01/how-to-install-oracle-11g-database.html)
