@@ -1,0 +1,9 @@
+---
+- yum: name={{item}}
+  with_items:
+    - xauth
+    - xclock
+    - xhost
+- file: path=/home/oracle/.ssh state=directory owner=oracle group=oinstall mode=700
+- shell: cp /home/vagrant/.ssh/authorized_keys /home/oracle/.ssh
+- file: path=/home/oracle/.ssh/authorized_keys owner=oracle group=oinstall
