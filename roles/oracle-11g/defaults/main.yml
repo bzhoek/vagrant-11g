@@ -1,0 +1,5 @@
+---
+oracle_base: "/opt/oracle"
+oracle_inventory: "{{oracle_base}}/inventory"
+oracle_sid: "orcl"
+oracle_home: "{{oracle_base}}/product/11.2.0/dbhome_1"
