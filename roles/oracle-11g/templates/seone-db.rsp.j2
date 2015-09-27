@@ -18,7 +18,7 @@ oracle.install.option=INSTALL_DB_AND_CONFIG
 # hostname rather than using the first hostname found on the system
 # (e.g., for systems with multiple hostnames and network interfaces).
 #-------------------------------------------------------------------------------
-ORACLE_HOSTNAME=localhost
+ORACLE_HOSTNAME={{ansible_hostname}}
 
 #-------------------------------------------------------------------------------
 # Unix group to be set for the inventory directory.  
@@ -28,7 +28,7 @@ UNIX_GROUP_NAME=oinstall
 #-------------------------------------------------------------------------------
 # Inventory location.
 #-------------------------------------------------------------------------------
-INVENTORY_LOCATION=/home/oracle/app/oraInventory
+INVENTORY_LOCATION={{oracle_inventory}}
 
 #-------------------------------------------------------------------------------
 # Specify the languages in which the components will be installed.             
@@ -64,12 +64,12 @@ SELECTED_LANGUAGES=en
 #-------------------------------------------------------------------------------
 # Complete path of the Oracle Home  
 #-------------------------------------------------------------------------------
-ORACLE_HOME=/home/oracle/app/oracle/product/11.2.0/dbhome_1
+ORACLE_HOME={{oracle_home}}
 
 #-------------------------------------------------------------------------------
 # Complete path of the Oracle Base. 
 #-------------------------------------------------------------------------------
-ORACLE_BASE=/home/oracle/app/oracle
+ORACLE_BASE={{oracle_base}}
 
 #-------------------------------------------------------------------------------
 # Installation Edition of the component.                        
@@ -239,7 +239,7 @@ oracle.install.db.config.starterdb.storageType=FILE_SYSTEM_STORAGE
 #
 # Applicable only when oracle.install.db.config.starterdb.storage=FILE_SYSTEM_STORAGE 
 #-------------------------------------------------------------------------------
-oracle.install.db.config.starterdb.fileSystemStorage.dataLocation=/home/oracle/app/oracle/oradata
+oracle.install.db.config.starterdb.fileSystemStorage.dataLocation={{oracle_base}}/oradata
 
 #-------------------------------------------------------------------------------
 # Backup and recovery location 

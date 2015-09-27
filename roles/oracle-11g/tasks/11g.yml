@@ -1,0 +1,10 @@
+---
+- template: src=seone-db.rsp.j2 dest=/tmp/seone-db.rsp owner=oracle group=oinstall
+- command: /database/runInstaller -force -ignorePrereq -ignoreSysPrereqs -responseFile /tmp/seone-db.rsp -silent -waitforcompletion
+  changed_when: installer_result.rc == 3
+  failed_when: installer_result.rc != 3 and installer_result.rc != 0
+  register: installer_result
+  sudo_user: oracle
+
+- shell: "{{oracle_inventory}}/orainstRoot.sh"
+- shell: "{{oracle_home}}/root.sh"
