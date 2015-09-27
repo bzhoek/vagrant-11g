@@ -42,3 +42,12 @@
 - file: path=/home/oracle/.ssh state=directory owner=oracle group=oinstall mode=700
 - shell: cp /home/vagrant/.ssh/authorized_keys /home/oracle/.ssh
 - file: path=/home/oracle/.ssh/authorized_keys owner=oracle group=oinstall
+
+- command: /database/runInstaller -force -ignorePrereq -ignoreSysPrereqs -responseFile /vagrant/roles/oracle-11g/files/seone-db.rsp -silent -waitforcompletion
+  changed_when: installer_result.rc == 3
+  failed_when: installer_result.rc != 3 and installer_result.rc != 0
+  register: installer_result
+  sudo_user: oracle
+
+- shell: /home/oracle/app/oraInventory/orainstRoot.sh
+- shell: /home/oracle/app/oracle/product/11.2.0/dbhome_1/root.sh
